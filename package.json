@@ -30,8 +30,13 @@
   "license": "MIT",
   "dependencies": {
     "egg": "^2.15.1",
+    "egg-passport": "^2.0.1",
+    "egg-redis": "^2.3.1",
     "egg-scripts": "^2.11.0",
+    "egg-session-redis": "^2.1.0",
     "egg-view-ejs": "^2.0.0",
+    "egg-xxmi-core": "^1.0.5",
+    "passport-local": "^1.0.0",
     "xxmi-egg-proxy": "^0.0.3"
   },
   "devDependencies": {
