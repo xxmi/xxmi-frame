@@ -3,6 +3,7 @@
 const LocalStrategy = require('passport-local').Strategy;
 module.exports = app => {
   const config = app.config;
+  const SESSION_STORE_PREFIX = config.sessionStore.prefix || 'login-session';
 
   // 登录认证--------------- start ------------------------------------------------------
   // 挂载 strategy
@@ -12,19 +13,13 @@ module.exports = app => {
     passReqToCallback: true,
   }, (req, account, password, done) => {
     const user = {
-      provider: 'local',
+      provider: 'local', // 提供者名称，登录的 Controller 必须登录策略必须指定为 local
       account,
       password,
     };
     app.passport.doVerify(req, user, done);
   }));
 
-  // 登录校验逻辑
-  app.passport.verify(async (ctx, user) => {
-    const {config} = ctx.app;
-    const {status, result} = await HttpApi(ctx, config.api.baseURL, false);
-    return {status, result};
-  });
   // 序列化用户信息
   app.passport.serializeUser(async (ctx, user) => {
     ctx.session.user = user;
@@ -41,21 +36,20 @@ module.exports = app => {
     }
 
     async get(key) {
-      const res = await app.redis.get(`login-session:${key}`);
+      const res = await app.redis.get(`${SESSION_STORE_PREFIX}:${key}`);
       if (!res) return null;
       return JSON.parse(res);
     }
 
     async set(key, value, maxAge) {
-      // maxAge not present means session cookies
-      // we can't exactly know the maxAge and just set an appropriate value like one day
+      // maxAge 设置会话时间
       if (!maxAge) maxAge = 24 * 60 * 60 * 1000;
       value = JSON.stringify(value);
-      await app.redis.set(`login-session:${key}`, value, 'PX', maxAge);
+      await app.redis.set(`${SESSION_STORE_PREFIX}:${key}`, value, 'PX', maxAge);
     }
 
     async destroy(key) {
-      await app.redis.del(`login-session:${key}`);
+      await app.redis.del(`${SESSION_STORE_PREFIX}:${key}`);
     }
   };
   // 登录认证-------------------------- end -------------------------------------------

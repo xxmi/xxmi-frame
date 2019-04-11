@@ -48,3 +48,8 @@ exports.sessionRedis = {
 
 // 登录认证 --结束----------------------------------------
 
+exports.xxmiCore = {
+  enable: true,
+  package: 'egg-xxmi-core',
+};
+

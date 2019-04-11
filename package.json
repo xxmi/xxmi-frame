@@ -9,7 +9,7 @@
   "scripts": {
     "start": "egg-scripts start --daemon --title=egg-server-xxmi-frame",
     "stop": "egg-scripts stop --title=egg-server-xxmi-frame",
-    "dev": "egg-bin dev",
+    "dev": "egg-bin dev --port=7100",
     "debug": "egg-bin debug",
     "test": "npm run lint -- --fix && npm run test-local",
     "test-local": "egg-bin test",
@@ -36,8 +36,9 @@
     "egg-session-redis": "^2.1.0",
     "egg-view-ejs": "^2.0.0",
     "egg-xxmi-core": "^1.0.5",
-    "passport-local": "^1.0.0",
-    "xxmi-egg-proxy": "^0.0.3"
+    "egg-xxmi-proxy": "^0.0.1",
+    "ms": "^2.1.1",
+    "passport-local": "^1.0.0"
   },
   "devDependencies": {
     "autod": "^3.0.1",
