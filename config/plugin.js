@@ -13,13 +13,6 @@ exports.ejs = {
   enable: true,
   package: 'egg-view-ejs',
 };
-/**
- * 请求代理
- */
-exports.xxmiEggProxy = {
-  enable: true,
-  package: 'xxmi-egg-proxy',
-};
 
 // redis 缓存配置
 exports.redis = {
@@ -51,5 +44,13 @@ exports.sessionRedis = {
 exports.xxmiCore = {
   enable: true,
   package: 'egg-xxmi-core',
+};
+
+/**
+ * 请求代理
+ */
+exports.xxmiProxy = {
+  enable: true,
+  package: 'egg-xxmi-proxy',
 };
 

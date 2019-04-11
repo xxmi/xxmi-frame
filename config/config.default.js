@@ -39,7 +39,7 @@ module.exports = app => {
    * 代理
    * @type {{proxy: RegExp, host: string}}
    */
-  config.xxmiEggProxy = {
+  config.xxmiProxy = {
     host: 'http://localhost:8001',
     proxy: /^\/api/,
   };
