@@ -18,7 +18,7 @@ class LoginController extends Controller {
       app.passport.authenticate('local', async (error, response) => {
         logger.debug(error, response);
         if (!isLogin) {
-          resolve({ code: 200100, message: '账号或者密码错误' });
+          return resolve({ code: 200100, message: '账号或者密码错误' });
         }
         if (rememberMe) {
           ctx.session.maxAge = config.rememberMe.maxAge; // 设置 session 过期时间
