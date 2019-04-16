@@ -54,3 +54,7 @@ exports.xxmiProxy = {
   package: 'egg-xxmi-proxy',
 };
 
+exports.cors = {
+  enable: true,
+  package: 'egg-cors',
+};

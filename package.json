@@ -30,6 +30,7 @@
   "license": "MIT",
   "dependencies": {
     "egg": "^2.15.1",
+    "egg-cors": "^2.2.0",
     "egg-passport": "^2.0.1",
     "egg-redis": "^2.3.1",
     "egg-scripts": "^2.11.0",

@@ -16,7 +16,7 @@ module.exports = app => {
   config.static = {
     maxAge: 0, // maxAge 缓存，默认 1 年
     prefix: '/public/',
-    dir: [ path.join(app.baseDir, 'public'), path.join(app.baseDir, 'static') ],
+    dir: [path.join(app.baseDir, 'public'), path.join(app.baseDir, 'static')],
   };
 
   /**
@@ -94,6 +94,16 @@ module.exports = app => {
   config.passportLocal = {
     usernameField: 'account', // 定义username 用什么字段
     passwordField: 'password',
+  };
+
+  config.security = {
+    domainWhiteList: ['http://localhost:8100'],
+  };
+
+  config.cors = {
+    credentials: true,
+    // {string|Function} origin: '*', // 不能设置为 *
+    // {string|Array} allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
   };
 
   const userConfig = { // 用户配置
