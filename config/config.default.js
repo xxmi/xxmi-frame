@@ -97,13 +97,14 @@ module.exports = app => {
   };
 
   config.security = {
-    domainWhiteList: ['http://localhost:8100'],
+    // domainWhiteList: ['http://localhost:8100'], // 白名单 CORS
   };
 
   config.cors = {
     credentials: true,
-    // {string|Function} origin: '*', // 不能设置为 *
-    // {string|Array} allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH'
+    domainWhiteList: ['*'], // 允许所有的域名访问
+    origin: '*',
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
   };
 
   const userConfig = { // 用户配置
