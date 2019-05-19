@@ -26,6 +26,7 @@ module.exports = app => {
   config.view = {
     mapping: {
       '.ejs': 'ejs',
+      '.html': 'ejs',
     },
   };
 
