@@ -16,7 +16,7 @@ module.exports = app => {
   config.static = {
     maxAge: 0, // maxAge 缓存，默认 1 年
     prefix: '/public/',
-    dir: [path.join(app.baseDir, 'public'), path.join(app.baseDir, 'static')],
+    dir: [ path.join(app.baseDir, 'public'), path.join(app.baseDir, 'static') ],
   };
 
   /**
@@ -103,7 +103,7 @@ module.exports = app => {
 
   config.cors = {
     credentials: true,
-    domainWhiteList: ['*'], // 允许所有的域名访问
+    domainWhiteList: [ '*' ], // 允许所有的域名访问
     origin: '*',
     allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH',
   };
